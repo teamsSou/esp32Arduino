@@ -51,8 +51,8 @@ const char* htmlPage = R"rawliteral(
   <h1>四軸モータ Web Controller</h1>
   <div>current速度 (PWM): <div class="speed-display" id="speed-val">0</div></div>
   
-  <button onclick="changeSpeed('speed_up')">加速 (Speed +16)</button>
-  <button class="btn-down" onclick="changeSpeed('speed_down')">減速 (Speed -16)</button>
+  <button onclick="changeSpeed('speed_up')">加速 (Speed +64)</button>
+  <button class="btn-down" onclick="changeSpeed('speed_down')">減速 (Speed -64)</button>
   <button class="btn-stop" onclick="changeSpeed('speed_stop')">急停 (Speed = 0)</button>
 </body>
 </html>
@@ -79,7 +79,7 @@ void handleRoot() {
 
 // 处理网页发来的“加速”请求
 void handleSpeedUp() {
-  speed += 16;
+  speed += 64;
   if (speed > 255) {
     speed = 255; // 上限を255でストップするように変更（0に戻すより操作しやすいはずです）
   }
@@ -88,15 +88,15 @@ void handleSpeedUp() {
   server.send(200, "text/plain", String(speed)); 
 
   // 固定値ではなく変数(speed)を出力する
+  analogWrite(D9,speed);
   analogWrite(D7, speed);
-  analogWrite(D3, speed);
-  analogWrite(D6, speed);
-  analogWrite(D10, speed);
+  analogWrite(D8, speed);
+  analogWrite(D4, speed);
 }
 
 // 处理网页发来的“减速”请求
 void handleSpeedDown() {
-  speed -= 16;
+  speed -= 64;
   if (speed < 0) {
     speed = 0; // 下限を0でストップ
   }
@@ -104,10 +104,10 @@ void handleSpeedDown() {
   Serial.println(speed);
   server.send(200, "text/plain", String(speed)); 
 
+  analogWrite(D9, speed);
   analogWrite(D7, speed);
-  analogWrite(D3, speed);
-  analogWrite(D6, speed);
-  analogWrite(D10, speed);
+  analogWrite(D8, speed);
+  analogWrite(D4, speed);
 }
 
 // 处理网页发来的“急停”请求
@@ -116,10 +116,10 @@ void handleSpeedStop() {
   Serial.println("Web Command: STOP -> 0");
   server.send(200, "text/plain", String(speed));
 
+  analogWrite(D9, speed);
   analogWrite(D7, speed);
-  analogWrite(D3, speed);
-  analogWrite(D6, speed);
-  analogWrite(D10, speed);
+  analogWrite(D8, speed);
+  analogWrite(D4, speed);
 }
 
 // 独立的后台 Web 监听任务
@@ -135,15 +135,15 @@ void setup() {
   delay(1000); 
 
   pinMode(D0, INPUT_PULLUP);
+  pinMode(D9, OUTPUT);
   pinMode(D7, OUTPUT);
-  pinMode(D3, OUTPUT);
-  pinMode(D6, OUTPUT);
-  pinMode(D10, OUTPUT);
+  pinMode(D8, OUTPUT);
+  pinMode(D4, OUTPUT);
 
+  analogWrite(D9, 0);
   analogWrite(D7, 0);
-  analogWrite(D3, 0);
-  analogWrite(D6, 0);
-  analogWrite(D10, 0);
+  analogWrite(D8, 0);
+  analogWrite(D4, 0);
 
   initWiFi();
 
