@@ -6,14 +6,14 @@
 // HTTPサーバインスタンス (ポート80)
 WebServer server(80);
 
-// WiFi 账号密码 (请替换为你自己的)
+// WiFi アカウントとパスワード
 const char* ssid = "iPhone";
 const char* password = "5nqpq9egrfhon";
 
-// 全局变量：电机速度
+// グローバル変数：モータースピード
 int speed = 0;
 
-// 使用 R"rawliteral(...)rawliteral" 编写前端 HTML
+// R"rawliteral(...)rawliteral" を使ったフロントエンドHTML
 const char* htmlPage = R"rawliteral(
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@ const char* htmlPage = R"rawliteral(
     button { padding: 15px 30px; font-size: 20px; margin: 10px; cursor: pointer; border: none; border-radius: 8px; background-color: #28a745; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     button:active { background-color: #218838; transform: translateY(2px); box-shadow: none; }
     
-    /* 減速ボタン（黄色）のスタイルを追加 */
+    /* 減速ボタン（黄色）のスタイル */
     .btn-down { background-color: #ffc107; color: #333; }
     .btn-down:active { background-color: #e0a800; }
 
@@ -36,7 +36,7 @@ const char* htmlPage = R"rawliteral(
     .btn-stop:active { background-color: #c82333; }
   </style>
   <script>
-    // 向开发板发送请求，并更新网页上显示的速度
+    // 開発ボードへリクエストを送り、Web上の速度表示を更新する
     function changeSpeed(action) {
       fetch('/' + action)
         .then(response => response.text())
@@ -62,39 +62,45 @@ void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi ..");
+  
+  // Wi-Fi接続中は内蔵LEDを点滅させる
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print('.');
-    delay(1000);
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN)); //LEDの状態をReadをした後にLED_BUILTINにWrite☆
+    delay(500); // 0.5秒待機
   }
+  
+  // 接続完了したらLEDを「常時点灯」にする（XIAOはLOWで点灯します）
+  digitalWrite(LED_BUILTIN, LOW); //☆digitalWrite(LED_BUILTIN,LOW又はHIGH)=digitalWrite(LOW)点、digitalWrite(HIGH)滅
+  
   Serial.println();
-  Serial.println("WiFi Connected!");
+  Serial.println("WiFi Connected! [Flight Ready]");
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 }
 
-// 根目录网页响应
+// ルートディレクトリの応答
 void handleRoot() {
   server.send(200, "text/html", htmlPage);
 }
 
-// 处理网页发来的“加速”请求
+// 加速リクエストの処理
 void handleSpeedUp() {
   speed += 64;
   if (speed > 255) {
-    speed = 255; // 上限を255でストップするように変更（0に戻すより操作しやすいはずです）
+    speed = 255; // 上限を255でストップ
   }
   Serial.print("Web Command: Speed Up -> ");
   Serial.println(speed);
   server.send(200, "text/plain", String(speed)); 
 
-  // 固定値ではなく変数(speed)を出力する
-  analogWrite(D9,speed);
-  analogWrite(D7, speed);
+  analogWrite(D9, speed);
+  analogWrite(D5, speed);
   analogWrite(D8, speed);
   analogWrite(D4, speed);
 }
 
-// 处理网页发来的“减速”请求
+// 減速リクエストの処理
 void handleSpeedDown() {
   speed -= 64;
   if (speed < 0) {
@@ -105,24 +111,24 @@ void handleSpeedDown() {
   server.send(200, "text/plain", String(speed)); 
 
   analogWrite(D9, speed);
-  analogWrite(D7, speed);
+  analogWrite(D5, speed);
   analogWrite(D8, speed);
   analogWrite(D4, speed);
 }
 
-// 处理网页发来的“急停”请求
+// 急停リクエストの処理
 void handleSpeedStop() {
   speed = 0;
   Serial.println("Web Command: STOP -> 0");
   server.send(200, "text/plain", String(speed));
 
   analogWrite(D9, speed);
-  analogWrite(D7, speed);
+  analogWrite(D5, speed);
   analogWrite(D8, speed);
   analogWrite(D4, speed);
 }
 
-// 独立的后台 Web 监听任务
+// 独立したバックグラウンドWebリスニングタスク
 void httpTask(void* pvParameters) {
   for (;;) {
     server.handleClient();
@@ -134,14 +140,19 @@ void setup() {
   Serial.begin(115200); 
   delay(1000); 
 
+  // 内蔵LEDの初期設定（最初は消灯させておく：HIGHで消灯）
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH); 
+
   pinMode(D0, INPUT_PULLUP);
   pinMode(D9, OUTPUT);
-  pinMode(D7, OUTPUT);
+  pinMode(D5, OUTPUT);
   pinMode(D8, OUTPUT);
   pinMode(D4, OUTPUT);
 
+  // 起動時にモーターが回らないように確実に0にする
   analogWrite(D9, 0);
-  analogWrite(D7, 0);
+  analogWrite(D5, 0);
   analogWrite(D8, 0);
   analogWrite(D4, 0);
 
@@ -163,5 +174,5 @@ void setup() {
 }
 
 void loop() {
-  // もし物理ボタン（D0）のコードも使いたい場合は、ここに以前のボタン処理を追記してください。
+  // 物理ボタンの処理などが必要な場合はここに記述
 }
