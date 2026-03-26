@@ -6,7 +6,13 @@
 // HTTPサーバインスタンス (ポート80)
 WebServer server(80);
 
-// WiFi アカウントとパスワード
+// 自分のWIFIアクセスポイントのIDとPW
+#define MySsid "Esp32c6-xiao-long";
+#define MyPassword  "12345678";
+IPAddress MyIp( 192, 168, 0, 1 );         /* ESP32のIPアドレス */
+IPAddress MySubnet( 255, 255, 255, 0 );   /* サブネットマスク */
+
+// 接続先のWiFi アカウントとパスワード
 const char* ssid = "iPhone";
 const char* password = "5nqpq9egrfhon";
 
@@ -58,6 +64,7 @@ const char* htmlPage = R"rawliteral(
 </html>
 )rawliteral";
 
+// クライアントとして指定したSSIDのWIFIに接続
 void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
@@ -69,13 +76,15 @@ void initWiFi() {
     digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN)); //LEDの状態をReadをした後にLED_BUILTINにWrite☆
     delay(500); // 0.5秒待機
   }
+
+// アクセスポイントとして
+void initWiFiAP() {
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(MySsid, MyPassword);
+  Serial.print("Starting WiFiAP ..");
+  delay(100);
+  WiFi.softAPConfig(MyIp, MyIp, MySubnet);
   
-  // 接続完了したらLEDを「常時点灯」にする（XIAOはLOWで点灯します）
-  digitalWrite(LED_BUILTIN, LOW); //☆digitalWrite(LED_BUILTIN,LOW又はHIGH)=digitalWrite(LOW)点、digitalWrite(HIGH)滅
-  
-  Serial.println();
-  Serial.println("WiFi Connected! [Flight Ready]");
-  Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
 }
 
@@ -157,6 +166,7 @@ void setup() {
   analogWrite(D4, 0);
 
   initWiFi();
+  //initWiFiAP();
 
   if (MDNS.begin("esp32")) {
     Serial.println("MDNS responder started. You can access via http://esp32.local");
