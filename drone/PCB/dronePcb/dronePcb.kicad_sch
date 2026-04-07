@@ -763,10 +763,11 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at -16.764 11.684 0)
+			(property "Reference" "U1"
+				(at -1.27 13.97 0)
 				(show_name no)
 				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -774,7 +775,7 @@
 				)
 			)
 			(property "Value" "XIAO-ESP32-C6-DIP"
-				(at -7.112 9.906 0)
+				(at -1.27 11.43 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -783,7 +784,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Seeed_Studio_XIAO_Series:XIAO-ESP32-C6-DIP"
+			(property "Footprint" "New_XIAO_Series_Footprints:XIAO-ESP32-C6-DIP"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1085,12 +1086,12 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Switch:SW_SPST"
+		(symbol "Switch:SW_Push"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0)
+				(offset 1.016)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -1099,17 +1100,18 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "SW"
-				(at 0 3.175 0)
+				(at 1.27 2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "SW_SPST"
-				(at 0 -2.54 0)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1119,7 +1121,7 @@
 				)
 			)
 			(property "Footprint" ""
-				(at 0 0 0)
+				(at 0 5.08 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1130,6 +1132,17 @@
 				)
 			)
 			(property "Datasheet" ""
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Push button switch, generic, two pins"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1140,7 +1153,7 @@
 					)
 				)
 			)
-			(property "Description" "Single Pole Single Throw (SPST) switch"
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1151,18 +1164,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "switch lever"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SW_SPST_0_0"
+			(symbol "SW_Push_0_1"
 				(circle
 					(center -2.032 0)
 					(radius 0.508)
@@ -1176,7 +1178,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.254) (xy 1.524 1.778)
+						(xy 0 1.27) (xy 0 3.048)
 					)
 					(stroke
 						(width 0)
@@ -1197,12 +1199,22 @@
 						(type none)
 					)
 				)
-			)
-			(symbol "SW_SPST_1_1"
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy -2.54 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
 					(at -5.08 0 0)
 					(length 2.54)
-					(name "A"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1220,7 +1232,7 @@
 				(pin passive line
 					(at 5.08 0 180)
 					(length 2.54)
-					(name "B"
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1749,18 +1761,6 @@
 		)
 	)
 	(junction
-		(at 144.78 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "08635e37-2911-4d5d-8502-3092f0881635")
-	)
-	(junction
-		(at 163.83 62.23)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0d9f7eac-31fd-4b5e-813f-c9a1ac615a7c")
-	)
-	(junction
 		(at 58.42 102.87)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1773,22 +1773,28 @@
 		(uuid "24bbc383-0cd9-4aae-92b8-bfec4cd8958f")
 	)
 	(junction
+		(at 186.69 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2bba5a05-8f47-4b2b-b6eb-e2d9f967180e")
+	)
+	(junction
 		(at 58.42 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2d11f1c7-93a6-479a-a022-0d9f742ef676")
 	)
 	(junction
-		(at 170.18 83.82)
+		(at 186.69 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4025336b-817f-4b23-b356-328247784e6f")
+	)
+	(junction
+		(at 170.18 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5d769d9b-77ab-4962-9de7-94f1136a8b99")
-	)
-	(junction
-		(at 186.69 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "60fc2dce-caf0-4b29-986a-518121356c80")
 	)
 	(junction
 		(at 170.18 102.87)
@@ -1797,16 +1803,16 @@
 		(uuid "66972659-3e5c-47b2-b777-122911625fd6")
 	)
 	(junction
-		(at 186.69 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6aa50990-6660-4d99-a038-1e733f5d18c4")
-	)
-	(junction
 		(at 160.02 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7091e372-f261-4329-b2ad-6c9be0ac990a")
+	)
+	(junction
+		(at 163.83 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb12e8cb-24e5-48d8-9f4d-ee09b297d6fc")
 	)
 	(junction
 		(at 74.93 83.82)
@@ -1821,16 +1827,16 @@
 		(uuid "d9593550-0773-48a7-a63c-fae0fdede4c8")
 	)
 	(junction
-		(at 186.69 83.82)
+		(at 186.69 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "eabce25c-2851-4ca8-8d74-83bad98dcbe5")
+		(uuid "e194f002-9c4b-4cd9-b555-ef26a1c005b2")
 	)
 	(junction
-		(at 144.78 73.66)
+		(at 186.69 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ff8e066c-31bb-4e3e-a3a9-18918be12f7e")
+		(uuid "ed842ca5-13da-45ec-9b5d-444cd2d719fb")
 	)
 	(no_connect
 		(at 104.14 66.04)
@@ -1866,7 +1872,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 83.82) (xy 172.72 83.82)
+			(xy 170.18 86.36) (xy 172.72 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1876,7 +1882,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 83.82) (xy 163.83 83.82)
+			(xy 170.18 86.36) (xy 163.83 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1893,26 +1899,6 @@
 			(type default)
 		)
 		(uuid "0ee146b2-2223-4533-83bb-c04f1e722e9c")
-	)
-	(wire
-		(pts
-			(xy 186.69 83.82) (xy 186.69 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11d5787f-b4de-44da-9c6c-2f56ea94cb1d")
-	)
-	(wire
-		(pts
-			(xy 144.78 73.66) (xy 144.78 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "14d087a5-6464-4480-b84c-fe7df930bf56")
 	)
 	(wire
 		(pts
@@ -1946,7 +1932,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 76.2) (xy 148.59 76.2)
+			(xy 146.05 78.74) (xy 148.59 78.74)
 		)
 		(stroke
 			(width 0)
@@ -1966,13 +1952,23 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 73.66) (xy 144.78 73.66)
+			(xy 142.24 73.66) (xy 147.32 73.66)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "2e847b41-499a-4301-945c-473bb4ff1fd3")
+	)
+	(wire
+		(pts
+			(xy 185.42 102.87) (xy 186.69 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ecf8281-06ab-495f-b29b-e8c635cdbe52")
 	)
 	(wire
 		(pts
@@ -1986,26 +1982,6 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 107.95) (xy 144.78 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "39de59f0-a89f-413e-a0d7-17f65f0dec39")
-	)
-	(wire
-		(pts
-			(xy 186.69 83.82) (xy 186.69 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3ba4910e-19b1-4292-9f7c-771d2e7710c9")
-	)
-	(wire
-		(pts
 			(xy 58.42 95.25) (xy 64.77 95.25)
 		)
 		(stroke
@@ -2016,7 +1992,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 76.2) (xy 146.05 81.28)
+			(xy 146.05 78.74) (xy 146.05 81.28)
 		)
 		(stroke
 			(width 0)
@@ -2026,7 +2002,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 71.12) (xy 160.02 69.85)
+			(xy 160.02 73.66) (xy 160.02 69.85)
 		)
 		(stroke
 			(width 0)
@@ -2036,23 +2012,13 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 76.2) (xy 181.61 76.2)
+			(xy 186.69 78.74) (xy 181.61 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "41b582bd-631c-4c85-bf18-5150ebaf5959")
-	)
-	(wire
-		(pts
-			(xy 186.69 95.25) (xy 181.61 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "474ee39e-17bb-4abf-ba5c-1c4ab22bb418")
 	)
 	(wire
 		(pts
@@ -2066,16 +2032,6 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 102.87) (xy 186.69 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a840304-5f03-4b38-9fec-098252b07356")
-	)
-	(wire
-		(pts
 			(xy 81.28 64.77) (xy 81.28 71.12)
 		)
 		(stroke
@@ -2086,7 +2042,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 71.12) (xy 160.02 71.12)
+			(xy 157.48 73.66) (xy 160.02 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2096,7 +2052,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 83.82) (xy 163.83 81.28)
+			(xy 163.83 86.36) (xy 163.83 83.82)
 		)
 		(stroke
 			(width 0)
@@ -2156,17 +2112,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 102.87) (xy 185.42 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5affd15b-dae4-44a6-8526-84b3cfc6de06")
-	)
-	(wire
-		(pts
-			(xy 163.83 62.23) (xy 163.83 71.12)
+			(xy 163.83 62.23) (xy 163.83 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2206,7 +2152,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 83.82) (xy 185.42 83.82)
+			(xy 186.69 86.36) (xy 185.42 86.36)
 		)
 		(stroke
 			(width 0)
@@ -2223,16 +2169,6 @@
 			(type default)
 		)
 		(uuid "6db4859c-27b5-4271-8225-50d338182636")
-	)
-	(wire
-		(pts
-			(xy 186.69 95.25) (xy 186.69 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6de72939-b738-4319-b080-f62972184042")
 	)
 	(wire
 		(pts
@@ -2276,6 +2212,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 62.23) (xy 186.69 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8188bea4-daea-411e-871d-664d6324c579")
+	)
+	(wire
+		(pts
 			(xy 160.02 60.96) (xy 160.02 62.23)
 		)
 		(stroke
@@ -2296,7 +2242,27 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 88.9) (xy 163.83 90.17)
+			(xy 186.69 86.36) (xy 186.69 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9258981b-4572-46a3-8f3a-26ca00787bcb")
+	)
+	(wire
+		(pts
+			(xy 186.69 62.23) (xy 186.69 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d08bd5a-751e-4ce3-9f3c-d17bcb4a3b57")
+	)
+	(wire
+		(pts
+			(xy 162.56 88.9) (xy 162.56 90.17)
 		)
 		(stroke
 			(width 0)
@@ -2326,23 +2292,43 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 62.23) (xy 166.37 62.23)
+			(xy 181.61 95.25) (xy 186.69 95.25)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b878e949-4d13-4ad3-a552-2860dde6bf60")
+		(uuid "b6d07d2f-f02d-4c65-a721-31d9e2bdfe89")
 	)
 	(wire
 		(pts
-			(xy 170.18 83.82) (xy 170.18 76.2)
+			(xy 162.56 90.17) (xy 163.83 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6d0c4c0-c692-4cc5-a177-7dd6ea8e343e")
+	)
+	(wire
+		(pts
+			(xy 170.18 86.36) (xy 170.18 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "bb1c6b70-249f-4212-b0d4-82f818dc2536")
+	)
+	(wire
+		(pts
+			(xy 186.69 95.25) (xy 186.69 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bce9c911-f4db-4de4-8d56-d13a2cd65a4b")
 	)
 	(wire
 		(pts
@@ -2353,6 +2339,16 @@
 			(type default)
 		)
 		(uuid "bef6ff25-80b5-49b7-8105-d50b38ab389b")
+	)
+	(wire
+		(pts
+			(xy 163.83 62.23) (xy 168.91 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c15459f1-5783-42a6-8af7-f92c88adc747")
 	)
 	(wire
 		(pts
@@ -2373,6 +2369,26 @@
 			(type default)
 		)
 		(uuid "c56d9592-9d62-4982-9543-47837c75480e")
+	)
+	(wire
+		(pts
+			(xy 186.69 102.87) (xy 186.69 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5eb74c2-5d1e-4b35-bfeb-49d3ac0ace1d")
+	)
+	(wire
+		(pts
+			(xy 186.69 76.2) (xy 186.69 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ceac1ced-96e0-4e10-a6b5-4d65d2ed729f")
 	)
 	(wire
 		(pts
@@ -2436,7 +2452,7 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 76.2) (xy 170.18 76.2)
+			(xy 173.99 78.74) (xy 170.18 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2456,16 +2472,6 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 71.12) (xy 147.32 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee1cc350-35a5-4bf3-9a01-1d85ca7b93a6")
-	)
-	(wire
-		(pts
 			(xy 146.05 95.25) (xy 148.59 95.25)
 		)
 		(stroke
@@ -2476,13 +2482,23 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 107.95) (xy 186.69 107.95)
+			(xy 58.42 107.95) (xy 186.69 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f15cbed0-315d-4a55-928f-6c25ac17dc11")
+	)
+	(wire
+		(pts
+			(xy 186.69 78.74) (xy 186.69 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f36325b5-dccc-4a7e-b60c-758d40329b55")
 	)
 	(wire
 		(pts
@@ -2503,16 +2519,6 @@
 			(type default)
 		)
 		(uuid "f92b46d1-23d5-4505-875b-10ebaeb775e8")
-	)
-	(wire
-		(pts
-			(xy 144.78 73.66) (xy 144.78 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fa96bd1c-738b-4bbc-bf44-d8977f133230")
 	)
 	(wire
 		(pts
@@ -2604,9 +2610,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GNDREF")
-		(at 163.83 88.9 0)
-		(mirror x)
+		(lib_id "Switch:SW_Push")
+		(at 186.69 71.12 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2614,9 +2619,20 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "191b38c8-55f0-4035-85c4-0cd1ca8fe14d")
-		(property "Reference" "#PWR02"
-			(at 163.83 82.55 0)
+		(uuid "13f59f5b-6395-4518-a92f-f89d758dcac0")
+		(property "Reference" "SW2"
+			(at 181.102 69.342 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 176.53 72.39 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2624,21 +2640,11 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Value" "GNDREF"
-			(at 163.83 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 163.83 88.9 0)
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
+			(at 181.61 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2649,7 +2655,89 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 163.83 88.9 0)
+			(at 181.61 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 186.69 71.12 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6aecc173-4bd7-428a-8213-4e8cc3332828")
+		)
+		(pin "2"
+			(uuid "872eac62-f077-4ec9-8cc4-3ce7d6e26a97")
+		)
+		(instances
+			(project "dronePcb"
+				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDREF")
+		(at 162.56 88.9 0)
+		(mirror x)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "191b38c8-55f0-4035-85c4-0cd1ca8fe14d")
+		(property "Reference" "#PWR02"
+			(at 162.56 82.55 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GNDREF"
+			(at 162.56 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2660,7 +2748,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 163.83 88.9 0)
+			(at 162.56 88.9 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2684,7 +2772,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 166.37 62.23 0)
+		(at 163.83 62.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2695,7 +2783,7 @@
 		(fields_autoplaced yes)
 		(uuid "1b73bf6a-8d4e-4355-8966-30587d69e8a0")
 		(property "Reference" "#FLG01"
-			(at 166.37 60.325 0)
+			(at 163.83 60.325 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2706,7 +2794,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 166.37 57.15 0)
+			(at 163.83 57.15 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2716,7 +2804,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 166.37 62.23 0)
+			(at 163.83 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2727,7 +2815,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 166.37 62.23 0)
+			(at 163.83 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2738,7 +2826,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 166.37 62.23 0)
+			(at 163.83 62.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2970,8 +3058,121 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Battery_Cell")
+		(at 171.45 62.23 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "30bfa470-474f-46b4-a73c-c36cd2fe4b78")
+		(property "Reference" "BT3"
+			(at 173.2915 54.61 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3.3v"
+			(at 171.704 65.786 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
+			(at 172.974 62.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.974 62.23 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single-cell battery"
+			(at 171.45 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 171.45 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "DC"
+			(at 171.45 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 171.45 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "88a9b9f4-9717-40d5-8f0e-341ff7b1badf")
+		)
+		(pin "2"
+			(uuid "901f129a-9c39-4e10-96f0-314c76e68a00")
+		)
+		(instances
+			(project "dronePcb"
+				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
+					(reference "BT3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Transistor_BJT:PN2222A")
-		(at 161.29 76.2 0)
+		(at 161.29 78.74 0)
 		(mirror x)
 		(unit 1)
 		(body_style 1)
@@ -2983,7 +3184,7 @@
 		(fields_autoplaced yes)
 		(uuid "40e57a65-96d7-4073-817d-c44bdab04e9e")
 		(property "Reference" "Q4"
-			(at 166.37 74.9299 0)
+			(at 166.37 77.4699 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2994,7 +3195,7 @@
 			)
 		)
 		(property "Value" "PN2222A"
-			(at 166.37 77.4699 0)
+			(at 166.37 80.0099 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3006,7 +3207,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
-			(at 166.37 74.295 0)
+			(at 166.37 76.835 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3019,7 +3220,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/PN2222-D.PDF"
-			(at 161.29 76.2 0)
+			(at 161.29 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3031,7 +3232,7 @@
 			)
 		)
 		(property "Description" "1A Ic, 40V Vce, NPN Transistor, General Purpose Transistor, TO-92"
-			(at 161.29 76.2 0)
+			(at 161.29 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3042,7 +3243,7 @@
 			)
 		)
 		(property "Sim.Device" "NPN"
-			(at 161.29 76.2 0)
+			(at 161.29 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3053,7 +3254,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=E 2=B 3=C"
-			(at 161.29 76.2 0)
+			(at 161.29 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3083,7 +3284,7 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4007")
-		(at 177.8 76.2 180)
+		(at 177.8 78.74 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3093,7 +3294,7 @@
 		(dnp no)
 		(uuid "41d138a5-74b1-4da2-b004-7ee965b20fca")
 		(property "Reference" "D4"
-			(at 180.848 76.708 90)
+			(at 180.848 79.248 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3104,7 +3305,7 @@
 			)
 		)
 		(property "Value" "1N4007"
-			(at 176.5301 78.74 90)
+			(at 176.5301 81.28 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3116,7 +3317,7 @@
 			)
 		)
 		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal"
-			(at 177.8 71.755 0)
+			(at 177.8 74.295 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3127,7 +3328,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.vishay.com/docs/88503/1n4001.pdf"
-			(at 177.8 76.2 0)
+			(at 177.8 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3138,7 +3339,7 @@
 			)
 		)
 		(property "Description" "1000V 1A General Purpose Rectifier Diode, DO-41"
-			(at 177.8 76.2 0)
+			(at 177.8 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3149,7 +3350,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 177.8 76.2 0)
+			(at 177.8 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3160,7 +3361,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 177.8 76.2 0)
+			(at 177.8 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3180,87 +3381,6 @@
 			(project "dronePcb"
 				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
 					(reference "D4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_SPST")
-		(at 152.4 71.12 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "56c31686-37a6-4749-922b-5959ef61c124")
-		(property "Reference" "SW1"
-			(at 152.4 67.31 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_SPST"
-			(at 152.4 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 152.4 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 152.4 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Single Pole Single Throw (SPST) switch"
-			(at 152.4 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "dbdd5b36-3ef4-438a-8d75-03008802e3e8")
-		)
-		(pin "1"
-			(uuid "f4479aab-0e01-4223-bd40-363bb0897410")
-		)
-		(instances
-			(project "dronePcb"
-				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
-					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -3298,7 +3418,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 152.4 93.472 90)
 			(hide yes)
 			(show_name no)
@@ -3348,7 +3468,7 @@
 	)
 	(symbol
 		(lib_id "Motor:Motor_DC")
-		(at 180.34 83.82 270)
+		(at 180.34 86.36 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3358,7 +3478,7 @@
 		(dnp no)
 		(uuid "693b7bb3-3325-4c2c-bd28-a94e2e793844")
 		(property "Reference" "M4"
-			(at 182.88 87.63 0)
+			(at 182.88 90.17 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3369,7 +3489,7 @@
 			)
 		)
 		(property "Value" "Motor_DC"
-			(at 176.5301 88.9 0)
+			(at 176.5301 91.44 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3380,8 +3500,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 178.054 83.82 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
+			(at 178.054 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3392,7 +3512,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 178.054 83.82 0)
+			(at 178.054 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3403,7 +3523,7 @@
 			)
 		)
 		(property "Description" "DC Motor"
-			(at 180.34 83.82 0)
+			(at 180.34 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3423,6 +3543,86 @@
 			(project "dronePcb"
 				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
 					(reference "M4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 152.4 73.66 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "794b2510-c54e-45a7-9494-d63745746f0c")
+		(property "Reference" "SW1"
+			(at 153.162 69.088 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 152.4 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
+			(at 152.4 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 152.4 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "19389e35-4022-4fa3-81ed-e2a9b39ef126")
+		)
+		(pin "2"
+			(uuid "a8bcf149-9f8a-4e73-a0f0-8b69f56181d7")
+		)
+		(instances
+			(project "dronePcb"
+				(path "/89e14d66-bcea-4b18-8817-6c924fa976d6"
+					(reference "SW1")
 					(unit 1)
 				)
 			)
@@ -3542,7 +3742,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 67.056 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -3622,7 +3822,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Seeed_Studio_XIAO_Series:XIAO-ESP32-C6-DIP"
+		(property "Footprint" "New_XIAO_Series_Footprints:XIAO-ESP32-C6-DIP"
 			(at 124.46 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -3738,7 +3938,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 160.02 66.294 90)
 			(hide yes)
 			(show_name no)
@@ -3821,7 +4021,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 152.4 76.2 90)
+		(at 152.4 78.74 90)
 		(mirror x)
 		(unit 1)
 		(body_style 1)
@@ -3832,7 +4032,7 @@
 		(dnp no)
 		(uuid "b168eb5c-d8e6-49a6-8505-a032b025f1e2")
 		(property "Reference" "R4"
-			(at 152.654 76.2 90)
+			(at 152.654 78.74 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3842,7 +4042,7 @@
 			)
 		)
 		(property "Value" "220Ω"
-			(at 152.654 73.914 90)
+			(at 152.654 76.454 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3851,8 +4051,8 @@
 				)
 			)
 		)
-		(property "Footprint" ""
-			(at 152.4 74.422 90)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 152.4 76.962 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3863,7 +4063,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 152.4 76.2 0)
+			(at 152.4 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3874,7 +4074,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 152.4 76.2 0)
+			(at 152.4 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4149,7 +4349,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 178.054 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -4232,7 +4432,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x01_P2.54mm_Vertical"
 			(at 68.326 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -4613,7 +4813,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 92.71 74.422 90)
 			(hide yes)
 			(show_name no)
@@ -4692,7 +4892,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 93.98 93.472 90)
 			(hide yes)
 			(show_name no)
